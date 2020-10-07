@@ -1,6 +1,11 @@
 # years_between
 Calculate difference in years with decimals between to dates in ruby. Both start_date and end_date are inclusive by default.
 
+Install:
+
+Add `gem 'years_between'` to your gemfile.
+
+
 Usage:
 
 ```ruby
