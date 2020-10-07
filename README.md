@@ -10,3 +10,10 @@ Usage:
   YearsBetween.calculate_years_between(start_date, end_date)
   > 1.0
 ```
+
+Excluding dates is possible with the :exclude keyword (possible values: :start_date, :end_date, :both)
+
+```ruby
+  YearsBetween.calculate_years_between(start_date, end_date, exclude: :end_date)
+  > 0.9972677595628415
+```
