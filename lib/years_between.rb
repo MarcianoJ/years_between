@@ -1,12 +1,24 @@
 require 'date'
 
 class YearsBetween
+
+  class MissingDateError < StandardError
+    def message
+      'start_date and end_date must be present'
+    end
+  end
+  class StartDateAfterEndDateError < StandardError
+    def message
+      'start_date cannot be past end_date'
+    end
+  end
+
   def self.calculate_years_between(start_date, end_date, exclude: nil)
     start_date += 1 if exclude.to_s == 'start_date' || exclude.to_s == 'both'
     end_date -= 1 if exclude.to_s == 'end_date' || exclude.to_s == 'both'
 
-    raise 'start_date and end_date must be present' if [start_date, end_date].any?(&:nil?)
-    raise 'start_date cannot be past end_date' if start_date > end_date
+    raise MissingDateError if [start_date, end_date].any?(&:nil?)
+    raise StartDateAfterEndDateError if start_date > end_date
 
     start_year = start_date.year
     start_month = start_date.month
